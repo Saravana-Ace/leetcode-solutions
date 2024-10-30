@@ -24,6 +24,7 @@ class Solution:
             heappush(res, temp)
         
         if k > len(res): return -1
+        
         for i in range(k):
             if i == k-1:
                 return -heappop(res)
