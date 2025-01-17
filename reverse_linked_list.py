@@ -19,3 +19,17 @@ class Solution:
             temp = temp.next
         
         return head
+    
+# solution 2 - flipping the direction of the pointers
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        end = None
+        curr = head
+
+        while curr:
+            temp = curr.next
+            curr.next = end
+            end = curr
+            curr = temp
+
+        return end
