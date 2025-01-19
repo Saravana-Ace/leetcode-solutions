@@ -15,3 +15,12 @@ class Solution:
                 return True
                 
         return False
+
+# solution 2 - changing values until you see the same one
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        while head != None:
+            if head.val == float('inf'): return 1
+            head.val = float('inf')
+            head = head.next
+        return 0
