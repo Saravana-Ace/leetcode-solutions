@@ -14,7 +14,7 @@ class Solution:
 
             queue.append(i)
 
-            if queue and i+1 >= k:
+            if i+1 >= k:
                 res.append(nums[queue[0]])
         
         return res
