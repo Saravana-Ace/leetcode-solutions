@@ -8,7 +8,7 @@ class Solution:
             s_window_count[c] = 0
 
         i = 0
-        check = 0
+        matches = 0
         unique_chars = len(set(p))
         res = []
 
@@ -16,9 +16,9 @@ class Solution:
             s_window_count[s[j]] += 1
 
             if s_window_count[s[j]] == p_count[s[j]]:
-                check += 1
+                matches += 1
 
-            if check == unique_chars:
+            if matches == unique_chars:
                 while i < len(s) and s[i] not in p_count:
                     i += 1
                 
@@ -26,7 +26,7 @@ class Solution:
             
             if j-i+1 == len(p):
                 if s_window_count[s[i]] == p_count[s[i]]:
-                    check -= 1
+                    matches -= 1
                 s_window_count[s[i]] -= 1
                 i += 1
         
