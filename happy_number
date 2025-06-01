@@ -1,0 +1,36 @@
+# Both solutions: Using set and two pointers
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        checked = set()
+        
+        # while True:
+        #     if n == 1:
+        #         return True
+        #     elif n in checked:
+        #         return False
+            
+        #     checked.add(n)
+            
+        #     temp = 0
+            # for j in str(n):
+            #     temp += int(j)**2
+            # n = temp
+        
+        n_2 = n
+        while True:
+            slow = 0
+            for j in str(n):
+                slow += int(j)**2
+            n = slow
+
+            temp = fast = 0
+            for j in str(n_2):
+                temp += int(j)**2
+            for j in str(temp):
+                fast += int(j)**2
+            n_2 = fast
+
+            if fast == 1:
+                return True
+            elif slow == fast:
+                return False
