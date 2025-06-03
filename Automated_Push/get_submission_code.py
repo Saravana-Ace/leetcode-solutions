@@ -71,7 +71,7 @@ def check_and_update():
             subprocess.run(["git", "commit", "-m", problem_name], cwd="..")
             subprocess.run(['git', 'push'])
 
-schedule.every(30).seconds.do(check_and_update)
+schedule.every(10).seconds.do(check_and_update)
 
 while True:
     schedule.run_pending()
