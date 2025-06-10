@@ -27,13 +27,16 @@ class Solution:
         rows, cols = len(board), len(board[0])
 
         for r in range(rows):
-            if board[r][0] == "O": get_island((r,0))
-            if board[r][cols-1] == "O": get_island((r,cols-1))
+            if board[r][0] == "O": 
+                get_island((r,0))
+            if board[r][cols-1] == "O": 
+                get_island((r,cols-1))
         
         for c in range(cols):
-            if board[0][c] == "O": get_island((0,c))
-            if board[rows-1][c] == "O": get_island((rows-1,c))
-
+            if board[0][c] == "O": 
+                get_island((0,c))
+            if board[rows-1][c] == "O": 
+                get_island((rows-1,c))
             
         for i in range(rows):
             for j in range(cols):
