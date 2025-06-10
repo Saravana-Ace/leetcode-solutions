@@ -5,11 +5,8 @@ class Solution:
         number_row = defaultdict(set)
         number_col = defaultdict(set)
 
-        outer = [(0,2), (3,5), (6,8)]
-        inner = [(0,2), (3,5), (6,8)]
         for i in range(len(board)):
             for j in range(len(board[0])):
-
                 if board[i][j].isnumeric():
                     location = f"{i//3}{j//3}"
 
