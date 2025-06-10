@@ -24,7 +24,6 @@ class Solution:
                             queue.append((new_x, new_y))
                             visited.add((new_x, new_y))
         
-        
         # def dfs(coord):
         #     x,y = coord
 
