@@ -11,19 +11,18 @@ class Solution:
             for j in range(len(board[0])):
 
                 if board[i][j].isnumeric():
-                    # check if in mini grid
-                    counter = 1
-                    for a,b in outer:
-                        for x,y in inner:
-                            if a <= i <= b and x <= j <= y:
-                                if board[i][j] in number_locations[counter]: 
-                                    return False
-                                number_locations[counter].add(board[i][j])
-                            counter += 1
+                    temp_i = i//3
+                    temp_j = j//3
+                    location = f"{temp_i}{temp_j}"
+
+                    if board[i][j] in number_locations[location]:
+                        return False
+                    
                 
                     if i in number_row[board[i][j]] or j in number_col[board[i][j]]:
                         return False
 
+                    number_locations[location].add(board[i][j])
                     number_row[board[i][j]].add(i)
                     number_col[board[i][j]].add(j)
         return True
