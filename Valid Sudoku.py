@@ -4,8 +4,7 @@ class Solution:
         number_locations = defaultdict(set)
         number_row = defaultdict(set)
         number_col = defaultdict(set)
-        # 0-2 0,2 3,5 6,8
-        # 3,5
+
         outer = [(0,2), (3,5), (6,8)]
         inner = [(0,2), (3,5), (6,8)]
         for i in range(len(board)):
@@ -25,6 +24,6 @@ class Solution:
                     if i in number_row[board[i][j]] or j in number_col[board[i][j]]:
                         return False
 
-                number_row[board[i][j]].add(i)
-                number_col[board[i][j]].add(j)
+                    number_row[board[i][j]].add(i)
+                    number_col[board[i][j]].add(j)
         return True
