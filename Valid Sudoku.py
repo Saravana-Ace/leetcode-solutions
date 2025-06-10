@@ -11,14 +11,11 @@ class Solution:
             for j in range(len(board[0])):
 
                 if board[i][j].isnumeric():
-                    temp_i = i//3
-                    temp_j = j//3
-                    location = f"{temp_i}{temp_j}"
+                    location = f"{i//3}{j//3}"
 
                     if board[i][j] in number_locations[location]:
                         return False
                     
-                
                     if i in number_row[board[i][j]] or j in number_col[board[i][j]]:
                         return False
 
