@@ -1,30 +1,24 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-        directions = [(0,1), (0,-1), (1,0), (-1,0)]
-        visited = set()
-        def dfs(curr_string, location):
-            x,y = location
-            curr_string += board[x][y]
-            
-            if curr_string == word:
+        ROWS, COLS = len(board), len(board[0])
+
+        def dfs(r, c, i):
+            if i == len(word):
                 return True
-            if curr_string != word[0:len(curr_string)]:
-                return
+            if (r < 0 or c < 0 or r >= ROWS or c >= COLS or
+                word[i] != board[r][c] or board[r][c] == '#'):
+                return False
 
-            for new_x, new_y in directions:
-                new_x += x
-                new_y += y
+            board[r][c] = '#'
+            res = (dfs(r + 1, c, i + 1) or
+                   dfs(r - 1, c, i + 1) or
+                   dfs(r, c + 1, i + 1) or
+                   dfs(r, c - 1, i + 1))
+            board[r][c] = word[i]
+            return res
 
-                if 0 <= new_x < len(board) and 0 <= new_y < len(board[0]) and (new_x, new_y) not in visited:
-                    visited.add((new_x, new_y))
-                    if dfs(curr_string, (new_x, new_y)): return True
-                    visited.remove((new_x, new_y))
-        
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                if board[i][j] == word[0]:
-                    visited.add((i,j))
-                    if dfs("", (i,j)): return True
-                    visited.remove((i,j))
-
+        for r in range(ROWS):
+            for c in range(COLS):
+                if dfs(r, c, 0):
+                    return True
         return False
