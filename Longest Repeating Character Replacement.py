@@ -13,7 +13,7 @@ class Solution:
         l, r = 0, 0
         res = 0
         curr_window_max_c = 0
-        while r < len(s):
+        for r in range(len(s)):
             char_count[s[r]] += 1
             window = (r-l+1)
             
@@ -21,10 +21,10 @@ class Solution:
             
             if window-curr_window_max_c <= k:
                 res = max(res, window)
-            else:
-                char_count[s[l]] -= 1
-                l += 1
-            r += 1
+                continue
+
+            char_count[s[l]] -= 1
+            l += 1
 
         return res
                 
