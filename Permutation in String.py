@@ -1,7 +1,6 @@
 from collections import defaultdict, Counter
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        print(len(s2))
         l = 0
         r = 0
         check = Counter(s1)
@@ -16,11 +15,10 @@ class Solution:
             if unique_char_count == len(check): return True
 
             if r-l+1 == len(s1):
+                if s2[l] in check and window_char_count[s2[l]] == check[s2[l]]:
+                    unique_char_count -= 1
 
                 window_char_count[s2[l]] -= 1
-                if s2[l] in check and window_char_count[s2[l]] == check[s2[l]]-1:
-                    unique_char_count -= 1
-                
                 l += 1
 
         return False
