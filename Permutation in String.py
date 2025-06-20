@@ -17,10 +17,10 @@ class Solution:
 
             if r-l+1 == len(s1):
 
-                if s2[l] in check and window_char_count[s2[l]] == check[s2[l]]:
+                window_char_count[s2[l]] -= 1
+                if s2[l] in check and window_char_count[s2[l]] == check[s2[l]]-1:
                     unique_char_count -= 1
                 
-                window_char_count[s2[l]] -= 1
                 l += 1
 
         return False
