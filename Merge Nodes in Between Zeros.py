@@ -5,7 +5,7 @@
 #         self.next = next
 class Solution:
     def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        res = None
+        ret = res = ListNode()
         start = head
         temp, count, prev = 0, 0 , None
         
@@ -13,15 +13,11 @@ class Solution:
             temp += start.val
 
             if start.val == 0:
-                if count == 1:
-                    res = start
-                elif count > 1:
-                    prev.next = start
-                
                 start.val = temp
                 temp = 0
-                count += 1
-                prev = start
+                res.next = start
+                res = res.next
+            
             start = start.next
         
-        return res
+        return ret.next.next
