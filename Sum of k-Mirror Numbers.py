@@ -19,9 +19,10 @@ class Solution:
                     
                     copy = str(i)
                     p = copy[:-1] + copy[::-1] if j == 1 else copy + copy[::-1]
+                    p = int(p)
 
-                    if convert_and_check(int(p)):
-                        res.append(int(p))
+                    if convert_and_check(p):
+                        res.append(p)
             
             l = r
         return sum(res)
