@@ -7,16 +7,15 @@ class Solution:
     def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
         ret = res = ListNode()
         start = head
-        slow = head
+        temp = 0
+        
         while start:
-            temp = 0
+            temp += start.val
             if start.val == 0:
-                while slow != start:
-                    temp += slow.val
-                    slow = slow.next
                 new_node = ListNode(temp)
                 res.next = new_node
                 res = res.next
+                temp = 0
+
             start = start.next
-        
         return ret.next.next
