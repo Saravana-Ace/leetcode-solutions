@@ -8,14 +8,20 @@ class Solution:
         ret = res = ListNode()
         start = head
         temp = 0
-        
+        count = 0
+        prev = None
         while start:
             temp += start.val
             if start.val == 0:
-                new_node = ListNode(temp)
-                res.next = new_node
-                res = res.next
+                if count == 1:
+                    res.next = start
+                elif count > 1:
+                    prev.next = start
+                
+                start.val = temp
                 temp = 0
-
+                count += 1
+                prev = start
             start = start.next
-        return ret.next.next
+        
+        return res.next
