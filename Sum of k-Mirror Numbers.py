@@ -18,10 +18,10 @@ class Solution:
                     if len(res) == n: break
                     
                     copy = str(i)
-                    p = int(copy[:-1] + copy[::-1]) if j == 1 else int(copy + copy[::-1])
+                    p = copy[:-1] + copy[::-1] if j == 1 else copy + copy[::-1]
 
-                    if convert_and_check(p):
-                        res.append(p)
+                    if convert_and_check(int(p)):
+                        res.append(int(p))
             
             l = r
         return sum(res)
