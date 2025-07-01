@@ -14,13 +14,11 @@ class Solution:
             if heap:
                 count = heapq.heappop(heap)
                 count += 1
-                if count < 0:
+                if count:
                     queue.append((count, time+n))
-            
             if queue and queue[0][1] == time:
-                heapq.heappush(heap, queue[0][0])
-                queue.popleft()
-
+                heapq.heappush(heap, queue.popleft()[0])
+            
             time += 1
 
         
