@@ -1,6 +1,3 @@
 class Solution:
     def possibleStringCount(self, word: str) -> int:
-        res = 0
-        for i, j in groupby(word):
-            res += len([*j])-1 
-        return res + 1
+        return sum(len([*p])-1 for _,p in groupby(word))+1
