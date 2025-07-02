@@ -1,15 +1,16 @@
 class Solution:
     def possibleStringCount(self, word: str) -> int:
-        temp = 1
+        count = 1
+        prev_letter = None
+        i = 0
         res = 0
-
-        prev = word[0]
-        for i in range(1, len(word)):
-            if word[i] == prev:
-                temp += 1
+        while i < len(word):
+            if word[i] == prev_letter:
+                count += 1
             else:
-                res += (temp-1) if temp > 0 else 0
-                temp = 1
-            prev = word[i]
-        res = res + (temp-1) if temp > 0 else 0
+                res += count-1
+                count = 1
+            prev_letter = word[i]
+            i += 1
+        res += count-1
         return res + 1
